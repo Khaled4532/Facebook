@@ -1,0 +1,311 @@
+/* أنماط عامة */
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #1c1e21;
+    line-height: 1.6;
+}
+
+/* أنماط صفحة تسجيل الدخول */
+.login-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #ffffff;
+    height: 60px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    color: #1877f2;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.login-box {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+}
+
+.login-box h1 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #1c1e21;
+}
+
+.input-field {
+    margin-bottom: 12px;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    font-size: 17px;
+}
+
+.input-field input:focus {
+    outline: none;
+    border-color: #1877f2;
+    box-shadow: 0 0 0 2px #e7f3ff;
+}
+
+.login-button {
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 12px;
+    width: 100%;
+    margin-bottom: 16px;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #166fe5;
+}
+
+.forgot-password {
+    color: #1877f2;
+    font-size: 14px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.divider {
+    border-bottom: 1px solid #dadde1;
+    margin: 20px 0;
+}
+
+.create-account {
+    background-color: #42b72a;
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 12px;
+    margin-top: 10px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.create-account:hover {
+    background-color: #36a420;
+}
+
+.footer {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #737373;
+}
+
+/* أنماط لوحة الإدارة */
+.admin-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.admin-header {
+    background-color: #1877f2;
+    color: white;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.admin-logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logout-button {
+    background-color: white;
+    color: #1877f2;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #f0f2f5;
+}
+
+.admin-container {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.admin-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    color: #65676b;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1877f2;
+}
+
+.admin-table-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-header h2 {
+    color: #1c1e21;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    padding: 8px 12px;
+    border: 1px solid #dddfe2;
+    border-radius: 4px;
+    width: 200px;
+}
+
+.search-box button {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.user-data-table th, .user-data-table td {
+    padding: 12px 15px;
+    text-align: right;
+    border-bottom: 1px solid #dddfe2;
+}
+
+.user-data-table th {
+    background-color: #f0f2f5;
+    font-weight: bold;
+    color: #1c1e21;
+}
+
+.user-data-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.user-data-table button {
+    background-color: #e4e6eb;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.user-data-table button:hover {
+    background-color: #d8dadf;
+}
+
+.table-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pagination button {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background-color: #e4e6eb;
+    cursor: not-allowed;
+}
+
+/* أنماط للانتقال بين الصفحات */
+.page-transition {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
